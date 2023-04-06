@@ -10,19 +10,19 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Slf4j
 public class EnversDemoCommandLineRunner implements CommandLineRunner {
-	private PizzaService pizzaService;
-	private PizzaRepository pizzaRepository;
+	private final PizzaService pizzaService;
+	private final PizzaRepository pizzaRepository;
 	
 	@Override
-	public void run(String... args) throws Exception {
-		pizzaService.create("Fred", "Supreme");
+	public void run(final String... args) throws Exception {
+		final Long id = pizzaService.create("Fred", "Supreme").getId();
 		pizzaService.create("Barney", "Margarita");
-		pizzaService.update(1L, "Meat Lovers");		
-		pizzaService.delete(1L);
+		pizzaService.update(id, "Meat Lovers");		
+		pizzaService.delete(id);
 		
 		pizzaRepository.findRevisions(1L).forEach(revision -> log.info("*** " + revision));
 		
-		pizzaService.create2("Ralph", "Cheese", "Ham");
+		pizzaService.createMany("Ralph", "Cheese", "Ham");
 	}
 
 }
