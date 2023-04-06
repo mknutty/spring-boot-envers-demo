@@ -15,12 +15,14 @@ public class EnversDemoCommandLineRunner implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		pizzaService.create("Mark", "Supreme");
-		pizzaService.create("Robin", "Margarita");
+		pizzaService.create("Fred", "Supreme");
+		pizzaService.create("Barney", "Margarita");
 		pizzaService.update(1L, "Meat Lovers");		
 		pizzaService.delete(1L);
 		
 		pizzaRepository.findRevisions(1L).forEach(revision -> log.info("*** " + revision));
+		
+		pizzaService.create2("Ralph", "Cheese", "Ham");
 	}
 
 }
