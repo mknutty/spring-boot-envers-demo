@@ -2,8 +2,11 @@ package mkn;
 
 import javax.persistence.EntityManager;
 
+import java.util.List;
+
 import org.hibernate.envers.AuditReaderFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.AllArgsConstructor;
 
@@ -17,11 +20,14 @@ import lombok.AllArgsConstructor;
 public class AuditService {
 	private final EntityManager entityManager;
 	
-	public void test() {
+	@Transactional
+	public List<Object> find(final Integer revisionId) {
 //		https://vladmihalcea.com/the-best-way-to-implement-an-audit-log-using-hibernate-envers/
 //		https://thoughts-on-java.org/hibernate-envers-query-data-audit-log/
 		
 //		Class.forName("	com.example.demo.Pizza"); 
 //		AuditReaderFactory.get(entityManager) ...
+		
+		return AuditReaderFactory.get(entityManager).getCrossTypeRevisionChangesReader().findEntities(revisionId);
 	}
 }
