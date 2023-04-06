@@ -18,5 +18,6 @@ The application uses an Embedded H2 database. It is created when the db starts a
 [Spring boot and embedded databases] (https://docs.spring.io/spring-boot/docs/2.1.13.BUILD-SNAPSHOT/reference/html/boot-features-sql.html#boot-features-embedded-database-support)
 
 The database can be viewed by opening the browser to http://localhost:8080/h2-console 
-and using the following as the JDBC URL - jdbc:h2:mem:testdb
+and using the  JDBC URL logged in the console.
+
 
