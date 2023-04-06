@@ -15,13 +15,13 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class AuditService {
-	private EntityManager entityManager;
+	private final EntityManager entityManager;
 	
 	public void test() {
 //		https://vladmihalcea.com/the-best-way-to-implement-an-audit-log-using-hibernate-envers/
 //		https://thoughts-on-java.org/hibernate-envers-query-data-audit-log/
 		
-//		Class.forName("	com.example.demo.Pizza");
+//		Class.forName("	com.example.demo.Pizza"); 
 //		AuditReaderFactory.get(entityManager) ...
 	}
 }
