@@ -26,11 +26,17 @@ public class EnversDemoCommandLineRunner implements CommandLineRunner {
 		pizzaService.delete(id);
 		
 		pizzaRepository.findRevisions(id).forEach(revision -> log.info("+++ " + revision));
+		auditService.forRevisionsOfEntityWithChanges(Pizza.class, id)
+			.forEach(revision -> { 
+				log.info("--- Entity " + revision[0]);
+				log.info("--- Change " + revision[2]);
+				log.info("--- Fields " + revision[3]);
+			});
 		
-		final List<Pizza> createMany = pizzaService.createMany("Ralph", "Cheese", "Ham");
+		final List<Pizza> createMany = pizzaService.createMany("Ralph", "Cheese", "Meat Lovers");
 		
 		final Optional<Revision<Integer, Pizza>> lastRevision = pizzaRepository.findLastChangeRevision(createMany.get(0).getId());
-		auditService.find(lastRevision.get().getRevisionNumber().get()).forEach(entity -> log.info("!!! " + entity));
+		auditService.findEntities(lastRevision.get().getRevisionNumber().get()).forEach(entity -> log.info("!!! " + entity));
 	
 	}
 
