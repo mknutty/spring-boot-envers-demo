@@ -1,13 +1,9 @@
 package mkn;
 
-import static java.util.Arrays.asList;
 import static org.eclipse.collections.impl.list.mutable.FastList.newListWith;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.collections.impl.list.mutable.FastList;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
